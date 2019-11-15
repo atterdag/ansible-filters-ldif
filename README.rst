@@ -38,7 +38,7 @@ Examples
 
 Convert dictionary to LDIF
 
-.. code:: ansible
+.. code:: yaml
 
     ---
     - name: Create dictionary with entries
@@ -96,9 +96,9 @@ Convert dictionary to LDIF
         content: "{{ dictionary | to_ldif }}"
         dest: "/tmp/test.ldif"
 
-Valid queries are:
+Convert LDIF to JSON
 
-.. code:: ansible
+.. code:: yaml
 
     ---
     - name: "Create multi-line string variable with LDIF data"
@@ -142,12 +142,6 @@ Valid queries are:
       copy:
         content: "{{ (ldif | from_ldif) | to_nice_json }}"
         dest: "/tmp/test.json"
-
-
-GitHub repository
------------------
-
-https://github.com/atterdag/ansible-filters-ldif
 
 
 License
