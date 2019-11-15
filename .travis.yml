@@ -1,0 +1,51 @@
+stages:
+- test
+language: python
+jobs:
+  include:
+  - stage: test
+    name: Tests Python 2.7
+    sudo: required
+    python:
+    - '2.7'
+    services:
+    - docker
+    before_install:
+    - docker pull vault:latest
+    - docker ps -a
+    install: pip install tox-travis
+    script: tox
+  - stage: test
+    name: Tests Python 3.6
+    sudo: required
+    python:
+    - '3.6'
+    services:
+    - docker
+    before_install:
+    - docker pull vault:latest
+    - docker ps -a
+    install: pip install tox-travis
+    script: tox
+  # - stage: test
+  #   name: Generating docs
+  #   python: '3.6'
+  #   deploy:
+  #     local-dir: ansible-repo/ansible/docs/docsite/_build/html
+  #     provider: pages
+  #     skip-cleanup: true
+  #     github-token: "$GITHUB_TOKEN"
+  #     keep-history: true
+  #     on:
+  #       tags: true
+  #   env:
+  #   - PLUGINS=''
+  #   install:
+  #   - pip install sphinx sphinx_rtd_theme
+  #   script:
+  #   - ./makedocs.sh
+  #   on:
+  #     tags: true
+# env:
+#   global:
+#     secure: <add secret>
