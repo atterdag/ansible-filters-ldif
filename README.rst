@@ -37,6 +37,7 @@ Examples
 --------
 
 Convert dictionary to LDIF
+
 .. code:: ansible
 
     ---
