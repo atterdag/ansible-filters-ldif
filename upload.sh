@@ -36,5 +36,5 @@ echo 'Press [ENTER] to continue (cntrl-c to quit)'
 read ANS
 rm -rf dist
 python setup.py sdist bdist_wheel
-twine check
+twine check dist/*
 twine upload dist/*
