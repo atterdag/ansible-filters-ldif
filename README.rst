@@ -6,9 +6,9 @@ Ansible filter for querying, and writing LDIF.
 .. image:: https://img.shields.io/pypi/v/ansible-filters-ldif.svg
    :alt: Latest version
    :target: https://pypi.python.org/pypi/ansible-filters-ldif/
-.. image:: https://jenkins.se.lemche.net/buildStatus/icon?job=ansible-filters-ldif%2Fdev&subject=Dev%20build%20duration%20${duration}
-   :alt: Jenkins
-   :target: https://jenkins.se.lemche.net/view/ansible-filters-ldif
+.. image:: https://travis-ci.org/atterdag/ansible-filters-ldif.svg?branch=master
+   :alt: Travis CI
+   :target: https://travis-ci.org/atterdag/ansible-filters-ldif
 .. image:: https://img.shields.io/badge/License-GPLv3-yellow.svg
    :alt: License: GPLv3
    :target: https://opensource.org/licenses/GPL-3.0
