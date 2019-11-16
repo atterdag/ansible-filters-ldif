@@ -80,3 +80,8 @@
     - name: Create new LDIF string with the following data
       debug:
         msg: "{{ new_ldif.split('\n') }}"
+
+    - name: testing ansible
+      copy:
+        content: "{{ new_ldif }}"
+        dest: "/tmp/new_ldif.ldif"
