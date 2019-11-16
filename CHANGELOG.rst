@@ -2,6 +2,13 @@ Changelog
 =========
 
 
+0.0.3 (2019-11-16)
+------------------
+- First travis pipeline. [atterdag]
+- Replaced jenkins with travis build status icon. [atterdag]
+- Forgot to add ```dist/*``` as argument for twine check. [atterdag]
+
+
 0.0.2 (2019-11-15)
 ------------------
 - 2nd attempt tp upload. [atterdag]
