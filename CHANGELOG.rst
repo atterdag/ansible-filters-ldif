@@ -2,6 +2,12 @@ Changelog
 =========
 
 
+0.0.4 (2019-11-16)
+------------------
+- I kinda broke my setup.py so it didn't include the actual python code.
+  [atterdag]
+
+
 0.0.3 (2019-11-16)
 ------------------
 - First travis pipeline. [atterdag]
