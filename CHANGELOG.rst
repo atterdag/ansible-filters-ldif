@@ -2,6 +2,15 @@ Changelog
 =========
 
 
+0.0.5 (2019-11-16)
+------------------
+- Got rid of all the _query_ stuff in the various descriptions. This
+  filter only reads, and writes LDIF. [atterdag]
+- Renamed ansible playbook 'play.yml' to 'playbook.yml' to make it more
+  clear how to run it. [atterdag]
+- Improved name of task in example playbook. [atterdag]
+
+
 0.0.4 (2019-11-16)
 ------------------
 - I kinda broke my setup.py so it didn't include the actual python code.
