@@ -1,6 +1,6 @@
 galaxy_info:
   author: Valdemar Lemche
-  description: Ansible filter to query or write LDIF
+  description: Ansible filter to read or write LDIF
   license: GNU
 
   min_ansible_version: 2.5

@@ -1,7 +1,7 @@
 Ansible LDIF filter
 ===================
 
-Ansible filter for querying, and writing LDIF.
+Ansible filter to read or write LDIF.
 
 .. image:: https://img.shields.io/pypi/v/ansible-filters-ldif.svg
    :alt: Latest version

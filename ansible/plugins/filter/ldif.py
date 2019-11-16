@@ -16,7 +16,7 @@ except ImportError:
 
 if not HAS_LIB:
     raise AnsibleError('You need to install "python-ldap" prior to running '
-                       'ldif_query filter')
+                       'to_ldif or from_ldi filter')
 
 
 class FilterModule(object):
