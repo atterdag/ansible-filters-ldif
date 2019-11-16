@@ -20,7 +20,7 @@ setuptools.setup(
         'Documentation': 'https://github.com/atterdag/ansible-filters-ldif/blob/master/README.rst',
         'Source Code': 'https://github.com/atterdag/ansible-filters-ldif',
     },
-    py_filters=[
+    py_modules=[
         "ansible/plugins/filter/ldif",
     ],
     classifiers=[
