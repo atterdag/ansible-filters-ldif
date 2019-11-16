@@ -2,6 +2,11 @@ Changelog
 =========
 
 
+0.0.6 (2019-11-16)
+------------------
+- Improved upload script to handle also testing. [atterdag]
+
+
 0.0.5 (2019-11-16)
 ------------------
 - Got rid of all the _query_ stuff in the various descriptions. This
