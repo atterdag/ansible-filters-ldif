@@ -1,40 +1,69 @@
 #!/usr/bin/env bash
-if [[ ! -f ~/.pypirc ]]; then
-  echo 'no ~/.pypirc exist!'
-  exit 1
-fi
 
-tox
+echo
+echo '******************************************************************************'
+echo '* Ensuring that pip test requirements are installed and upgraded.'
+pip install --upgrade --requirement test-requirements.txt
 
-pip install --upgrade gitchangelog twine
-
+echo
+echo '******************************************************************************'
+echo '* Get old version from setup.py'
 OLDVERSION=$(grep version setup.py | sed -e "s/.*='//" -e "s/',//")
 
+echo
+echo '******************************************************************************'
+echo '* Ready to update setup.py?'
+echo '* Press [ENTER] to continue (cntrl-c to quit)'
+read ANS
 vi setup.py
 
 VERSION=$(grep version setup.py | sed -e "s/.*='//" -e "s/',//")
 if [[ $OLDVERSION == $VERSION ]]; then
-    echo "Old version $OLDVERSION same as $VERSION"
-    echo 'Press [ENTER] to continue (cntrl-c to quit)'
-    read ANS
+  echo
+  echo '******************************************************************************'
+  echo "* Old version $OLDVERSION same as $VERSION"
+  echo '* Press [ENTER] to continue (cntrl-c to quit)'
+  read ANS
 else
+  echo
+  echo '******************************************************************************'
+  echo "* Ready to push $VERSION to GitHub?"
+  echo '* Press [ENTER] to continue (cntrl-c to quit)'
+  read ANS
   git tag -a $VERSION -m v$VERSION
   gitchangelog
   vi CHANGELOG.rst
+  git commit -m "Version $VERSION" CHANGELOG.rst setup.py
+  git push origin master
+  git tag --force  -a $VERSION -m v$VERSION
+  git push origin --tags
 fi
 
-echo "Ready to push $VERSION?"
-echo 'Press [ENTER] to continue (cntrl-c to quit)'
+echo
+echo '******************************************************************************'
+echo "* Ready to build $VERSION?"
+echo '* Press [ENTER] to continue (cntrl-c to quit)'
 read ANS
-git commit -m "Version $VERSION" CHANGELOG.rst setup.py
-git push origin master
-git tag --force  -a $VERSION -m v$VERSION
-git push origin --tags
-
-echo "Ready to build and push $VERSION to PiPY?"
-echo 'Press [ENTER] to continue (cntrl-c to quit)'
-read ANS
-rm -rf dist
+if [[ -d dist ]]; then
+    rm -rf dist
+fi
 python setup.py sdist bdist_wheel
 twine check dist/*
+
+echo
+echo '******************************************************************************'
+echo "* Ready to tox test $VERSION?"
+echo '* Press [ENTER] to continue (cntrl-c to quit)'
+read ANS
+tox
+
+echo
+echo '******************************************************************************'
+echo "* Ready to push $VERSION to PiPY?"
+echo '* Press [ENTER] to continue (cntrl-c to quit)'
+read ANS
+if [[ ! -f ~/.pypirc ]]; then
+  echo 'no ~/.pypirc exist!'
+  exit 1
+fi
 twine upload dist/*
