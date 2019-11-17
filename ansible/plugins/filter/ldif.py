@@ -6,7 +6,7 @@
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 from ansible.errors import AnsibleError, AnsibleFilterError
-from StringIO import StringIO
+from ansible.module_utils.six.moves import StringIO
 
 try:
     from ldif import LDIFWriter, LDIFRecordList
