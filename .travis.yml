@@ -17,6 +17,15 @@ jobs:
     script: tox
 deploy:
   provider: pypi
+  server: https://test.pypi.org/legacy/
+  user: "__token__"
+  password:
+    secure: 5PM17TcWBXCoCntFbdXHmUjzzfZ8TFyHMEj/aUXn/darCbZsZb6euzZqeiYftYulXi2PPCjMCMTbt7chAQZlOUDl9QRuc136JipzyUl6cya2OSqclO9pODgH2FA6y1ZBFmMsUqYeyReODbtyoP75euhX73ns/VSy6flIGAWhInQa4+d/JDjIEZiCX80k/732Cfz/bcWaYHnS+1hVDuI8oNiUcH/uajJPZUw780gE3BfvJW18hgGBoSIcItsP0Hq63y0VHIzgzbrh2tL8GWkiC9KuR9QN82EuCXsWj9Zb10CGXw/PPl5CCc992BvnNyDzWRX5hPeu6fpiF5RaB4BzKu/kTM16EjatrohrD2fkFLM9n84COTRV10geptSlwVPybPMJmHuNQZGTLRCZ6hog3OmMN2ZUGkIwMCs6tItwat/JIvlsOwEGMvcdm/OBHRvJoUfJnCLW28XgJTw4ylogJlxpiSlXww8Wn/RpAyU/mT/6bSsgTkGnV8A3SAg3/CEMi6ffHcwTFI7WvBhrDhb+Gf0YnMcngNn5hH3TgUvBB/qv6IvV7SrRAjbzqSYWdOkKocXLJ2M03vCHx9LLpe8A60Ehq43X0ZJ8/bAg6aNLJdAW0O7Ux4TbM4WMxkdWzC9N2SBIjfpLLG70+pBDk8p9qwxkEORTHc2XRgcJN2YeAhg=
+  on:
+    all_branches: true
+  distributions: sdist bdist_wheel
+deploy:
+  provider: pypi
   user: "__token__"
   password:
     secure: vn6l/A2MaZLMKz6qAHlSBBns4I6MZ+IPHliEk1av20o7nm+ebXIspO/8zCO1zijtbMjfYbq/nuisUT9MllkegRMfn5+7/Yr6/RNEd/8vomkW4rzCx16lTbzkpmk2WUW+A6lHkrredABWlU2Mg7Mvo97e3SV6AakN25SFC+xXg6gDahhqGmTa4jJedqKEfpH5wSSG8set+MTqUs4TFKDN+GTfwVtHUh59tNzHCvki5gIHKSX+Wo+DNkTUpvk5p9FSsvIA+/1stSqRCLQ4wIQ8mzpL7nd8k+C/kufA9EtGkNiQPmLP+lUlIrcdwnri8BLv2VN0q2c7HM0AsvnSZrXj1t8opsl9OVYPbLOJ1Q7A01hYl/TFHE1wf1y9hq0/Ks+/SjD3N98uPEBeMFcIC0WhX4zq+uD4NTClFCVhpYFTg8tsFtQsS9bGVG5zBSRdqLrSKLqXfM1d50v74Kl9wnV7Vzhzoy0Ksz7nJ0n0syAVYOgrj2EVZ7lG6BzwqhUdd8w+jX8CCcc6m29nkVG6Nd0zhDPRPGObGXrXaZdjpzv/yA213kR0LkWsRlE11uBz33XeFLJOIxSE6a5cS2xT/Rs39+XW10avMFn4J4j/lsYjNn7AQQqh6dbYRNTTbf5FG5qaKdBu4OdoMCckab68817xfKoeo2bTi6bX1127QjDJ+X8=
