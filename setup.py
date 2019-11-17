@@ -1,14 +1,17 @@
 #!/usr/bin/env python
+''' Python Module setup script
+    Ref: https://docs.python.org/3/distutils/setupscript.html
+'''
 import setuptools
 
 with open("README.rst", "r") as fh:
-    long_description = fh.read()
+    LONG_DESCRIPTION = fh.read()
 
 setuptools.setup(
     name='ansible-filters-ldif',
     version='0.0.6',
     description='Ansible filter to read or write LDIF.',
-    long_description=long_description,
+    long_description=LONG_DESCRIPTION,
     long_description_content_type='text/x-rst',
     author='Valdemar Lemche',
     author_email='valdmar@lemche.net',
