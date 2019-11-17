@@ -2,6 +2,39 @@ Changelog
 =========
 
 
+0.0.7 (2019-11-17)
+------------------
+- Added test deploy to Test PyPI. [atterdag]
+- Added deploy section when master branch is merged. [atterdag]
+- Cleaned up .travis.yml. [atterdag]
+- Changed test requirement to build requirements. [atterdag]
+- Added minimum version of tox supported. [atterdag]
+- Added additional check regarding pip packaging. [atterdag]
+- Expanded py27, and py36 to run ansible playbook. [atterdag]
+- Added pip module dependencies to pep8 section. [atterdag]
+- Replaced specific functional testing with default pytest in generic
+  [testenv] [atterdag]
+- Renamed virtualenv to testenv because using python-development was a
+  mistake. [atterdag]
+- Removed [python-development:venv] section because I can't see that I
+  need it. [atterdag]
+- Aligned indentation in tox.ini. [atterdag]
+- Disabled support for python 3 because the ldif module is broken in
+  python 3. [atterdag]
+- Ldif.py cannot adhere to PEP8 E402, so we have to ignore it.
+  [atterdag]
+- Moved ansible playbook to test directory. [atterdag]
+- Changed StringIO module import to use Ansibles six implementation.
+  [atterdag]
+- Differentiated between error messages in to_ldif method. [atterdag]
+- Moved PEP8 exception to pytest.ini, so its can be reused whenever
+  pytest is called. [atterdag]
+- Added test upload to Test PyPI before uploading to _real_ PiPY.
+  [atterdag]
+- Renamed examples to testing. [atterdag]
+- Made ansible playbook specific to testing filters. [atterdag]
+
+
 0.0.6 (2019-11-16)
 ------------------
 - Improved upload script to handle also testing. [atterdag]
