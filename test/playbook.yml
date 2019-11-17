@@ -1,0 +1,82 @@
+---
+
+- hosts: all
+  tasks:
+
+    - name: "STEP 1: Create dictionary"
+      set_fact:
+        dictionary:
+          - - dc=example,dc=com
+            - dc:
+                - example
+              description:
+                - This is a line longer than 79 characters, so LDIF breaks it up over multiple lines
+              o:
+                - example.com
+              objectClass:
+                - dcObject
+                - organization
+          - - ou=people,dc=example,dc=com
+            - objectClass:
+                - organizationalUnit
+              ou:
+                - people
+          - - cn=Jane Doe,ou=people,dc=example,dc=com
+            - cn:
+                - Jane Doe
+              mail:
+                - jane.doe@example.com
+              objectClass:
+                - inetOrgPerson
+              sn:
+                - Doe
+          - - cn=John Doe,ou=people,dc=example,dc=com
+            - cn:
+                - John Doe
+              mail:
+                - john.doe@example.com
+              objectClass:
+                - inetOrgPerson
+              sn:
+                - Doe
+          - - ou=groups,dc=example,dc=com
+            - objectClass:
+                - organizationalUnit
+              ou:
+                - groups
+          - - cn=users,ou=groups,dc=example,dc=com
+            - cn:
+                - users
+              member:
+                - cn=Jane Doe,ou=people,dc=example,dc=com
+                - cn=John Doe,ou=people,dc=example,dc=com
+              objectClass:
+                - groupOfNames
+
+    - name: Create dictionary with the following data
+      debug:
+        var: dictionary
+
+    - name: "STEP 2: Check that original dictionary can be transformed to LDIF using 'to_ldif' filter"
+      set_fact:
+        ldif: "{{ dictionary | to_ldif }}"
+
+    - name: Create LDIF string with the following data
+      debug:
+        msg: "{{ ldif }}"
+
+    - name: "STEP 3: Check that generated LDIF string can be transfored back to dictionary"
+      set_fact:
+        new_dictionary: "{{ ldif | from_ldif }}"
+
+    - name: Create new dictionary with the following data
+      debug:
+        var: new_dictionary
+
+    - name: "STEP 4: Check that new dictionary can be transfored back to LDIF again"
+      set_fact:
+        new_ldif: "{{ new_dictionary | to_ldif }}"
+
+    - name: Create new LDIF string with the following data
+      debug:
+        msg: "{{ new_ldif }}"

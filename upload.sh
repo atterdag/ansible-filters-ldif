@@ -2,8 +2,8 @@
 
 echo
 echo '******************************************************************************'
-echo '* Ensuring that pip test requirements are installed and upgraded.'
-pip install --upgrade --requirement test-requirements.txt
+echo '* Ensuring that pip build requirements are installed and upgraded.'
+pip install --upgrade --requirement build-requirements.txt
 
 echo
 echo '******************************************************************************'
@@ -59,11 +59,18 @@ tox
 
 echo
 echo '******************************************************************************'
-echo "* Ready to push $VERSION to PiPY?"
+echo "* Ready to push $VERSION to TestPyPI?"
 echo '* Press [ENTER] to continue (cntrl-c to quit)'
 read ANS
 if [[ ! -f ~/.pypirc ]]; then
   echo 'no ~/.pypirc exist!'
   exit 1
 fi
+twine upload dist/* -r pypi-test
+
+echo
+echo '******************************************************************************'
+echo "* Ready to push $VERSION to PyPI?"
+echo '* Press [ENTER] to continue (cntrl-c to quit)'
+read ANS
 twine upload dist/*

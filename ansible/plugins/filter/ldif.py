@@ -6,7 +6,7 @@
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 from ansible.errors import AnsibleError, AnsibleFilterError
-from StringIO import StringIO
+from ansible.module_utils.six.moves import StringIO
 
 try:
     from ldif import LDIFWriter, LDIFRecordList
@@ -61,4 +61,4 @@ class FilterModule(object):
                     'Invalid input data for to_ldif filter (%s)' % data)
         else:
             raise AnsibleFilterError(
-                'Invalid input data for to_ldif filter (%s)' % data)
+                'Input data to_ldif filter is not a list(%s)' % data)
