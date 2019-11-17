@@ -2,8 +2,8 @@
 
 echo
 echo '******************************************************************************'
-echo '* Ensuring that pip test requirements are installed and upgraded.'
-pip install --upgrade --requirement test-requirements.txt
+echo '* Ensuring that pip build requirements are installed and upgraded.'
+pip install --upgrade --requirement build-requirements.txt
 
 echo
 echo '******************************************************************************'
