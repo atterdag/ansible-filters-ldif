@@ -61,4 +61,4 @@ class FilterModule(object):
                     'Invalid input data for to_ldif filter (%s)' % data)
         else:
             raise AnsibleFilterError(
-                'Invalid input data for to_ldif filter (%s)' % data)
+                'Input data to_ldif filter is not a list(%s)' % data)
