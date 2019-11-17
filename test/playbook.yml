@@ -63,7 +63,7 @@
 
     - name: Create LDIF string with the following data
       debug:
-        msg: "{{ ldif.split('\n') }}"
+        msg: "{{ ldif }}"
 
     - name: "STEP 3: Check that generated LDIF string can be transfored back to dictionary"
       set_fact:
@@ -79,9 +79,4 @@
 
     - name: Create new LDIF string with the following data
       debug:
-        msg: "{{ new_ldif.split('\n') }}"
-
-    - name: testing ansible
-      copy:
-        content: "{{ new_ldif }}"
-        dest: "/tmp/new_ldif.ldif"
+        msg: "{{ new_ldif }}"
