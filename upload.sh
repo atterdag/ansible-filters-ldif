@@ -67,10 +67,3 @@ if [[ ! -f ~/.pypirc ]]; then
   exit 1
 fi
 twine upload dist/* -r pypi-test
-
-echo
-echo '******************************************************************************'
-echo "* Ready to push $VERSION to PyPI?"
-echo '* Press [ENTER] to continue (cntrl-c to quit)'
-read ANS
-twine upload dist/*
