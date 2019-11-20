@@ -3,6 +3,7 @@ pip
 setuptools
 sphinx
 sphinx_rtd_theme
+tox==3.7.0
 tqdm
 twine
 wheel
