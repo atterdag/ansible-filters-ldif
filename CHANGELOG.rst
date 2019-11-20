@@ -2,6 +2,18 @@ Changelog
 =========
 
 
+0.0.8 (2019-11-20)
+------------------
+- Removed upload to PRD PyPI from upload.sh because only Travis-CI
+  should upload merged master branches. [atterdag]
+- Removed test deployment to TestPyPI because we test that in upload.sh.
+  [atterdag]
+- Stopped running checkdocs with setup.py because its not longer
+  supported. [atterdag]
+- Moved tox package from tox.ini to build-requirements.txt because you
+  need to have tox installed before you can run it - doh! [atterdag]
+
+
 0.0.7 (2019-11-17)
 ------------------
 - Added test deploy to Test PyPI. [atterdag]
