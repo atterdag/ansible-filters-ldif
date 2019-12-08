@@ -3,7 +3,7 @@
 echo
 echo '******************************************************************************'
 echo '* Ensuring that pip build requirements are installed and upgraded.'
-pip install --upgrade --requirement build-requirements.txt
+pip install --upgrade --requirement requirements.txt
 
 echo
 echo '******************************************************************************'
