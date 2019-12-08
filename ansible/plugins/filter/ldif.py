@@ -23,6 +23,18 @@ class FilterModule(object):
         }
 
     @classmethod
+    def encode_values(cls, entry_payload):
+        ''' Encode all entries of all lists in dictionary to bytes.
+        '''
+        encoded_dict = {}
+        for key, list in entry_payload.items():
+            encoded_list = []
+            for entry in list:
+                encoded_list.append(entry.encode('utf-8'))
+                encoded_dict[key] = encoded_list
+        return encoded_dict
+
+    @classmethod
     def from_ldif(cls, data):
         ''' Convert LDIF data to dictionary
         '''
