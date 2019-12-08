@@ -35,6 +35,18 @@ class FilterModule(object):
         return encoded_dict
 
     @classmethod
+    def decode_values(cls, entry_payload):
+        ''' Decode all entries of all lists in dictionary to strings.
+        '''
+        decoded_dict = {}
+        for key, list in entry_payload.items():
+            decoded_list = []
+            for entry in list:
+                decoded_list.append(entry.decode())
+                decoded_dict[key] = decoded_list
+        return decoded_dict
+
+    @classmethod
     def from_ldif(cls, data):
         ''' Convert LDIF data to dictionary
         '''
