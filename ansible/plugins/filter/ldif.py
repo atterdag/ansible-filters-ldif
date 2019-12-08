@@ -7,16 +7,7 @@ from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 from ansible.errors import AnsibleError, AnsibleFilterError
 from ansible.module_utils.six.moves import StringIO
-
-try:
-    from ldif import LDIFWriter, LDIFRecordList
-    HAS_LIB = True
-except ImportError:
-    HAS_LIB = False
-
-if not HAS_LIB:
-    raise AnsibleError('You need to install "python-ldap" prior to running '
-                       'to_ldif or from_ldi filter')
+from ldif import LDIFWriter, LDIFRecordList
 
 
 class FilterModule(object):
