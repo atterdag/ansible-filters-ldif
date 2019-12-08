@@ -1,7 +1,6 @@
 #!/usr/bin/env python
-''' Python Module setup script
-    Ref: https://docs.python.org/3/distutils/setupscript.html
-'''
+"""Python Module setup script."""
+"""Ref: https://docs.python.org/3/distutils/setupscript.html."""
 import setuptools
 
 with open("README.rst", "r") as fh:

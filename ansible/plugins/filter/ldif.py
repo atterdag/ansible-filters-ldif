@@ -1,22 +1,23 @@
-'''(c) 2019, @atterdag
-   You should have received a copy of the GNU General Public License
-   along with module. If not, see <http://www.gnu.org/licenses/>.
-'''
+"""A LDIF Ansible filter plugin."""
+
+# (c) 2019, @atterdag
+
+# You should have received a copy of the GNU General Public License
+# along with module. If not, see <http://www.gnu.org/licenses/>.
 
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
+
 from ansible.errors import AnsibleError, AnsibleFilterError
 from ansible.module_utils.six.moves import StringIO
 from ldif import LDIFWriter, LDIFRecordList
 
 
 class FilterModule(object):
-    ''' Ansible LDIF filter class
-    '''
+    """Ansible LDIF filter class."""
 
     def filters(self):
-        ''' Method to map filter names in Ansible to methods in class
-        '''
+        """Map filter names in Ansible to methods in class."""
         return {
             'from_ldif': self.from_ldif,
             'to_ldif': self.to_ldif
@@ -24,8 +25,7 @@ class FilterModule(object):
 
     @classmethod
     def encode_values(cls, entry_payload):
-        ''' Encode all entries of all lists in dictionary to bytes.
-        '''
+        """Encode all entries of all lists in dictionary to bytes."""
         encoded_dict = {}
         for key, list in entry_payload.items():
             encoded_list = []
@@ -36,8 +36,7 @@ class FilterModule(object):
 
     @classmethod
     def decode_values(cls, entry_payload):
-        ''' Decode all entries of all lists in dictionary to strings.
-        '''
+        """Decode all entries of all lists in dictionary to strings."""
         decoded_dict = {}
         for key, list in entry_payload.items():
             decoded_list = []
@@ -48,8 +47,7 @@ class FilterModule(object):
 
     @classmethod
     def from_ldif(cls, data):
-        ''' Convert LDIF data to dictionary
-        '''
+        """Convert LDIF data to dictionary."""
         try:
             ldif_record_list = LDIFRecordList(StringIO(data))
             ldif_record_list.parse()
@@ -63,10 +61,10 @@ class FilterModule(object):
 
     @classmethod
     def to_ldif(cls, data):
-        ''' Convert list of dictionary to LDIF. See
-            https://github.com/atterdag/ansible-filters-ldif for how to
-            format dictionary.
-        '''
+        """Convert list of dictionary to LDIF."""
+        """See https://github.com/atterdag/ansible-filters-ldif for how to
+           format dictionary.
+        """
         if isinstance(data, list):
             try:
                 ldif_data = StringIO()
