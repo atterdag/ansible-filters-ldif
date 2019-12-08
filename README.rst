@@ -138,7 +138,7 @@ Convert LDIF to JSON
           member: cn=Jane Doe,ou=people,dc=example,dc=com
           member: cn=John Doe,ou=people,dc=example,dc=com
 
-    - name: "Convert string to JSON whiĺe writing it to /tmp/test.json using 'from_ldif' filter"
+    - name: "Convert string to JSON while writing it to /tmp/test.json using 'from_ldif' filter"
       copy:
         content: "{{ (ldif | from_ldif) | to_nice_json }}"
         dest: "/tmp/test.json"

@@ -5,13 +5,51 @@ jobs:
   include:
   - stage: test
     name: Tests Python 2.7
-    sudo: required
-    python:
-    - '2.7'
+    python: '2.7'
     services:
     - docker
     before_install:
-    - docker pull vault:latest
+    - docker pull python:latest
+    - docker ps -a
+    install: pip install tox-travis
+    script: tox
+  - stage: test
+    name: Tests Python 3.5
+    python: '3.5'
+    services:
+    - docker
+    before_install:
+    - docker pull python:latest
+    - docker ps -a
+    install: pip install tox-travis
+    script: tox
+  - stage: test
+    name: Tests Python 3.6
+    python: '3.6'
+    services:
+    - docker
+    before_install:
+    - docker pull python:latest
+    - docker ps -a
+    install: pip install tox-travis
+    script: tox
+  - stage: test
+    name: Tests Python 3.7
+    python: '3.7'
+    services:
+    - docker
+    before_install:
+    - docker pull python:latest
+    - docker ps -a
+    install: pip install tox-travis
+    script: tox
+  - stage: test
+    name: Tests Python 3.8
+    python: '3.8'
+    services:
+    - docker
+    before_install:
+    - docker pull python:latest
     - docker ps -a
     install: pip install tox-travis
     script: tox

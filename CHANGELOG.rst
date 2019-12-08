@@ -2,6 +2,25 @@ Changelog
 =========
 
 
+0.0.9 (2019-12-08)
+------------------
+- Renamed build-requirements.txt to just requirements.txt because it
+  just makes more sense. [atterdag]
+- Added additional pip modules to build requirements. [atterdag]
+- Replaced typo of accented "l" with ascii 'l' [atterdag]
+- Added tox support for python 3.5, 3,7 and 3,8. [atterdag]
+- Resolved (nearly) all issues reported by pycodestyle, and pydocstyle.
+  [atterdag]
+- Enabled python 3.6 testing. [atterdag]
+- Referenced methods to encode, and decode entry payloads. [atterdag]
+- Added method to decode values of entries returned from ldif module.
+  [atterdag]
+- Added method to encode values in the entry paylog dictionary.
+  [atterdag]
+- Removed check if python-ldap is installed, as its managed in the
+  module dependencies. [atterdag]
+
+
 0.0.8 (2019-11-20)
 ------------------
 - Removed upload to PRD PyPI from upload.sh because only Travis-CI
