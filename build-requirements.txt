@@ -1,5 +1,15 @@
+ansible
+autopep8
+doc8
+flake8
 gitchangelog
+pep8
 pip
+pycodestyle
+pydocstyle
+pylint
+python-ldap
+restructuredtext-lint
 setuptools
 sphinx
 sphinx_rtd_theme
