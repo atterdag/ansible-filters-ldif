@@ -53,7 +53,10 @@ class FilterModule(object):
         try:
             ldif_record_list = LDIFRecordList(StringIO(data))
             ldif_record_list.parse()
-            return ldif_record_list.all_records
+            returned = []
+            for entry in ldif_record_list.all_records:
+                returned.append([entry[0], cls.decode_values(entry[1])])
+            return returned
         except Exception:
             raise AnsibleFilterError(
                 'Invalid LDIF data for LDIFRecordList (%s)' % data)
@@ -69,7 +72,10 @@ class FilterModule(object):
                 ldif_data = StringIO()
                 ldif_writer = LDIFWriter(ldif_data)
                 for entry in data:
-                    ldif_writer.unparse(str(entry[0]), dict(entry[1]))
+                    ldif_writer.unparse(
+                        str(entry[0]),
+                        cls.encode_values(dict(entry[1]))
+                    )
                 return ldif_data.getvalue()
             except Exception:
                 raise AnsibleFilterError(
