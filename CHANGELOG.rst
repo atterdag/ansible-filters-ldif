@@ -2,6 +2,18 @@ Changelog
 =========
 
 
+0.0.9 (2019-12-08)
+------------------
+- Enabled python 3.6 testing. [atterdag]
+- Referenced methods to encode, and decode entry payloads. [atterdag]
+- Added method to decode values of entries returned from ldif module.
+  [atterdag]
+- Added method to encode values in the entry paylog dictionary.
+  [atterdag]
+- Removed check if python-ldap is installed, as its managed in the
+  module dependencies. [atterdag]
+
+
 0.0.8 (2019-11-20)
 ------------------
 - Removed upload to PRD PyPI from upload.sh because only Travis-CI
