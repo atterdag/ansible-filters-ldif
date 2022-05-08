@@ -8,7 +8,7 @@
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
-from ansible.errors import AnsibleError, AnsibleFilterError
+from ansible.errors import AnsibleError, AnsibleFilterError  # noqa: F401
 from ansible.module_utils.six.moves import StringIO
 from ldif import LDIFWriter, LDIFRecordList
 

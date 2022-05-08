@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Python Module setup script."""
 """Ref: https://docs.python.org/3/distutils/setupscript.html."""
-import setuptools
+import setuptools  # noqa: E402
 
 with open("README.rst", "r") as fh:
     LONG_DESCRIPTION = fh.read()
@@ -18,9 +18,9 @@ setuptools.setup(
     packages=[],
     license='GPLv3+',
     project_urls={
-        'Bug Tracker': 'https://github.com/atterdag/ansible-filters-ldif/issues',
-        'Documentation': 'https://github.com/atterdag/ansible-filters-ldif/blob/master/README.rst',
-        'Source Code': 'https://github.com/atterdag/ansible-filters-ldif',
+        'Bug Tracker': 'https://github.com/atterdag/ansible-filters-ldif/issues',  # noqa: E501
+        'Documentation': 'https://github.com/atterdag/ansible-filters-ldif/blob/master/README.rst',  # noqa: E501
+        'Source Code': 'https://github.com/atterdag/ansible-filters-ldif',  # noqa: E501
     },
     py_modules=[
         "ansible/plugins/filter/ldif",
@@ -31,7 +31,7 @@ setuptools.setup(
         'Intended Audience :: Developers',
         'Intended Audience :: Information Technology',
         'Intended Audience :: System Administrators',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',  # noqa: E501
         'Natural Language :: English',
         'Operating System :: POSIX',
         'Programming Language :: Python :: 2',
