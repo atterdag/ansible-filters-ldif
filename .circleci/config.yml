@@ -1,0 +1,101 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@2.0.3
+
+executors:
+  python-docker:
+    parameters:
+      version:
+        description: "version tag"
+        default: "lts"
+        type: string
+    docker:
+      - image: python:<<parameters.version>>
+        auth:
+          username: atterdag
+          password: $DOCKERHUB_PASSWORD
+  cimg-python-docker:
+    parameters:
+      version:
+        description: "version tag"
+        default: "lts"
+        type: string
+    docker:
+      - image: cimg/python:<<parameters.version>>
+        auth:
+          username: atterdag
+          password: $DOCKERHUB_PASSWORD
+
+jobs:
+  test:
+    parameters:
+      version:
+        description: "version tag"
+        default: "latest"
+        type: string
+    executor:
+      name: cimg-python-docker
+      version: <<parameters.version>>
+    steps:
+      - checkout
+      - run:
+          name: Install prerequisites
+          command: |
+            sudo apt-get update
+            sudo apt-get install --yes jq libssl-dev libldap2-dev libsasl2-dev python2-dev python3-dev
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: Test with tox
+          command: |
+            tox -e test
+  pep8:
+    executor:
+      name: python/default
+    steps:
+      - checkout
+      - run:
+          name: Install prerequisites
+          command: |
+            sudo apt-get update
+            sudo apt-get install --yes jq libssl-dev libldap2-dev libsasl2-dev python2-dev python3-dev
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: Test PEP8 with tox
+          command: |
+            tox -e pep8
+  check:
+    executor:
+      name: python/default
+    steps:
+      - checkout
+      - run:
+          name: Install prerequisites
+          command: |
+            sudo apt-get update
+            sudo apt-get install --yes jq libssl-dev libldap2-dev libsasl2-dev python2-dev python3-dev
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: Test twine with tox
+          command: |
+            tox -e check
+
+workflows:
+  build:
+    jobs:
+      - pep8
+      - test:
+          matrix:
+            parameters:
+              version:
+                - "2.7"
+                - "3.5"
+                - "3.6"
+                - "3.7"
+                - "3.8"
+                - "3.9"
+                - "3.10"
+      - check
