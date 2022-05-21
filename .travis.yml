@@ -5,60 +5,31 @@ cache:
 before_cache:
   - rm -f $HOME/.cache/pip/log/debug.log
 stages:
+- pep8
 - test
+- check
 language: python
-jobs:
-  include:
-  - stage: test
-    name: Tests Python 2.7
-    python: '2.7'
-    services:
-    - docker
-    before_install:
-    - docker pull python:2.7
-    - docker ps -a
-    install: pip install tox-travis
-    script: tox
-  - stage: test
-    name: Tests Python 3.7
-    python: '3.7'
-    services:
-    - docker
-    before_install:
-    - docker pull python:3.7
-    - docker ps -a
-    install: pip install tox-travis
-    script: tox
-  # - stage: test
-  #   name: Tests Python 3.8
-  #   python: '3.8'
-  #   services:
-  #   - docker
-  #   before_install:
-  #   - docker pull python:3.8
-  #   - docker ps -a
-  #   install: pip install tox-travis
-  #   script: tox
-  - stage: test
-    name: Tests Python 3.9
-    python: '3.9'
-    services:
-    - docker
-    before_install:
-    - docker pull python:3.9.0
-    - docker ps -a
-    install: pip install tox-travis
-    script: tox
-  - stage: test
-    name: Tests Python 3.10
-    python: '3.10'
-    services:
-    - docker
-    before_install:
-    - docker pull python:3.10
-    - docker ps -a
-    install: pip install tox-travis
-    script: tox
+python:
+  - "2.7"
+  - "3.7"
+  # - "3.8"
+  - "3.9"
+  - "3.10"
+install: pip install tox-travis
+# script: tox -e pep8
+script: tox
+# script: tox -e check
+# jobs:
+#   include:
+#     - stage: pep8
+#       install: pip install tox-travis
+#       script: tox -e pep8
+#     - stage: test
+#       install: pip install tox-travis
+#       script: tox
+#     - stage: check
+#       install: pip install tox-travis
+#       script: tox -e check
 deploy:
   provider: pypi
   user: "__token__"

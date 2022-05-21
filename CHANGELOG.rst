@@ -2,6 +2,42 @@ Changelog
 =========
 
 
+0.0.10 (2022-05-21)
+-------------------
+- Version 0.0.10. [atterdag]
+- Added remaining python 3 versions. [atterdag]
+
+  specified ubuntu 20.04 as vm
+
+  disabled 3.9 as it seems ansible fails to run with it
+
+  added caching to pip data
+
+  added instructions to use travis cmd client
+
+  updated list of tested python versions
+- Updated list of supported python versions. [atterdag]
+- Added a few more switches to flake8. [atterdag]
+- Moved test of individual python versions out. [atterdag]
+- Updated versions of python. [atterdag]
+- Cleaned up missing dependencies in tox.ini. [atterdag]
+- Replaced pytest with flake8. [atterdag]
+- Added documentation about build dependencies. [atterdag]
+- Create snyk-container.yml. [Valdemar Lemche]
+- Create python-app.yml. [Valdemar Lemche]
+- Version 0.0.9. [atterdag]
+- Renamed build-requirements.txt to just requirements.txt because it
+  just makes more sense. [atterdag]
+- Added additional pip modules to build requirements. [atterdag]
+- Replaced typo of accented "l" with ascii 'l' [atterdag]
+- Added tox support for python 3.5, 3,7 and 3,8. [atterdag]
+- Resolved (nearly) all issues reported by pycodestyle, and pydocstyle.
+  [atterdag]
+- forgot to fix links to travis-ci.com [atterdag]
+- removed docker from travis as it not used anyway [atterdag]
+- optimized travis conf [atterdag]
+- added link to sonar test. [atterdag]
+
 0.0.9 (2019-12-08)
 ------------------
 - Renamed build-requirements.txt to just requirements.txt because it
