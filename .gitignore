@@ -33,3 +33,6 @@ example/.ssh
 
 # Logs
 *.log
+
+# Travis
+/input.txt
