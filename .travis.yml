@@ -5,36 +5,41 @@ cache:
 before_cache:
   - rm -f $HOME/.cache/pip/log/debug.log
 stages:
-- pep8
+- syntax
 - test
-- check
+- deploy
 language: python
 python:
   - "2.7"
   - "3.7"
-  # - "3.8"
+# Unable to test ansible on travis-ci with python 3.8
+#  - "3.8"
   - "3.9"
   - "3.10"
-install: pip install tox-travis
-# script: tox -e pep8
-script: tox
-# script: tox -e check
-# jobs:
-#   include:
-#     - stage: pep8
-#       install: pip install tox-travis
-#       script: tox -e pep8
-#     - stage: test
-#       install: pip install tox-travis
-#       script: tox
-#     - stage: check
-#       install: pip install tox-travis
-#       script: tox -e check
-deploy:
-  provider: pypi
-  user: "__token__"
-  password:
-    secure: vn6l/A2MaZLMKz6qAHlSBBns4I6MZ+IPHliEk1av20o7nm+ebXIspO/8zCO1zijtbMjfYbq/nuisUT9MllkegRMfn5+7/Yr6/RNEd/8vomkW4rzCx16lTbzkpmk2WUW+A6lHkrredABWlU2Mg7Mvo97e3SV6AakN25SFC+xXg6gDahhqGmTa4jJedqKEfpH5wSSG8set+MTqUs4TFKDN+GTfwVtHUh59tNzHCvki5gIHKSX+Wo+DNkTUpvk5p9FSsvIA+/1stSqRCLQ4wIQ8mzpL7nd8k+C/kufA9EtGkNiQPmLP+lUlIrcdwnri8BLv2VN0q2c7HM0AsvnSZrXj1t8opsl9OVYPbLOJ1Q7A01hYl/TFHE1wf1y9hq0/Ks+/SjD3N98uPEBeMFcIC0WhX4zq+uD4NTClFCVhpYFTg8tsFtQsS9bGVG5zBSRdqLrSKLqXfM1d50v74Kl9wnV7Vzhzoy0Ksz7nJ0n0syAVYOgrj2EVZ7lG6BzwqhUdd8w+jX8CCcc6m29nkVG6Nd0zhDPRPGObGXrXaZdjpzv/yA213kR0LkWsRlE11uBz33XeFLJOIxSE6a5cS2xT/Rs39+XW10avMFn4J4j/lsYjNn7AQQqh6dbYRNTTbf5FG5qaKdBu4OdoMCckab68817xfKoeo2bTi6bX1127QjDJ+X8=
-  on:
-    branch: master
-  distributions: sdist bdist_wheel
+  - "nightly"
+install:
+  - pip install tox-travis
+script:
+  - tox || travis_terminate 1;
+jobs:
+  include:
+    - stage: syntax
+      python:
+        - "3.10"
+      install:
+        - pip install tox-travis
+      script:
+        - tox -e pep8 || travis_terminate 1;
+    - stage: deploy
+      python:
+        - "3.10"
+      script:
+        - tox -e check || travis_terminate 1;
+      deploy:
+        provider: pypi
+        user: "__token__"
+        password:
+          secure: vn6l/A2MaZLMKz6qAHlSBBns4I6MZ+IPHliEk1av20o7nm+ebXIspO/8zCO1zijtbMjfYbq/nuisUT9MllkegRMfn5+7/Yr6/RNEd/8vomkW4rzCx16lTbzkpmk2WUW+A6lHkrredABWlU2Mg7Mvo97e3SV6AakN25SFC+xXg6gDahhqGmTa4jJedqKEfpH5wSSG8set+MTqUs4TFKDN+GTfwVtHUh59tNzHCvki5gIHKSX+Wo+DNkTUpvk5p9FSsvIA+/1stSqRCLQ4wIQ8mzpL7nd8k+C/kufA9EtGkNiQPmLP+lUlIrcdwnri8BLv2VN0q2c7HM0AsvnSZrXj1t8opsl9OVYPbLOJ1Q7A01hYl/TFHE1wf1y9hq0/Ks+/SjD3N98uPEBeMFcIC0WhX4zq+uD4NTClFCVhpYFTg8tsFtQsS9bGVG5zBSRdqLrSKLqXfM1d50v74Kl9wnV7Vzhzoy0Ksz7nJ0n0syAVYOgrj2EVZ7lG6BzwqhUdd8w+jX8CCcc6m29nkVG6Nd0zhDPRPGObGXrXaZdjpzv/yA213kR0LkWsRlE11uBz33XeFLJOIxSE6a5cS2xT/Rs39+XW10avMFn4J4j/lsYjNn7AQQqh6dbYRNTTbf5FG5qaKdBu4OdoMCckab68817xfKoeo2bTi6bX1127QjDJ+X8=
+        on:
+          branch: master
+        distributions: sdist bdist_wheel
