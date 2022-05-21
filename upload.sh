@@ -66,4 +66,4 @@ if [[ ! -f ~/.pypirc ]]; then
   echo 'no ~/.pypirc exist!'
   exit 1
 fi
-twine upload dist/* -r pypi-test
+twine upload dist/* -r ansible-filters-ldif-test
