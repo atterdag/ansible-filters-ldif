@@ -8,7 +8,7 @@ with open("README.rst", "r") as fh:
 
 setuptools.setup(
     name='ansible-filters-ldif',
-    version='0.0.10a',
+    version='0.0.11',
     description='Ansible filter to read or write LDIF.',
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/x-rst',

@@ -2,8 +2,10 @@ Changelog
 =========
 
 
-0.0.10a (2022-05-21)
-------------
+0.0.11 (2022-05-21)
+-------------------
+- Deleted reference to 3.11-dev tox testenv. [Valdemar Lemche]
+- Version 0.0.10a. [atterdag]
 - Separated deploy into own stage. [atterdag]
 - Fixed broken links to travis build. [atterdag]
 - Adjusted to dedicated project token in test pipy. [atterdag]
