@@ -154,6 +154,7 @@ Install the following OS development packages first.
   sudo apt-get install libssl-dev libldap2-dev libsasl2-dev python2-dev python3-dev
   mkvirtualenv --python=/usr/bin/python3 python3-development
   pip install --requirement requirements.txt
+  gem install travis fry
 
 
 License
