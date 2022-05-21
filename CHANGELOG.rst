@@ -2,6 +2,17 @@ Changelog
 =========
 
 
+0.0.10a (2022-05-21)
+------------
+- Separated deploy into own stage. [atterdag]
+- Fixed broken links to travis build. [atterdag]
+- Adjusted to dedicated project token in test pipy. [atterdag]
+- Version 0.0.10. [atterdag]
+- * forgot to fix links to travis-ci.com * removed docker from travis as
+  it not used anyway * optimized travis conf * added link to sonar test.
+  [atterdag]
+
+
 0.0.10 (2022-05-21)
 -------------------
 - Version 0.0.10. [atterdag]
