@@ -2,6 +2,22 @@ Changelog
 =========
 
 
+0.0.10 (2022-05-21)
+-------------------
+- Added remaining python 3 versions. [atterdag]
+  specified ubuntu 20.04 as vm
+  disabled 3.9 as it seems ansible fails to run with it
+  added caching to pip data
+  added instructions to use travis cmd client
+  updated list of tested python versions
+- Updated list of supported python versions. [atterdag]
+- Added a few more switches to flake8. [atterdag]
+- Moved test of individual python versions out. [atterdag]
+- Updated versions of python. [atterdag]
+- Cleaned up missing dependencies in tox.ini. [atterdag]
+- Replaced pytest with flake8. [atterdag]
+
+
 0.0.9 (2019-12-08)
 ------------------
 - Renamed build-requirements.txt to just requirements.txt because it
